@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('C: \Daniela Nicol P. Valencia 2D WST/background.PNG.');
+      background-size: cover;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #f8c471;
+      color: lightcyan;
+      padding: 30px;
+      text-align: center;
+      font-size: 36px;
+    }
+
+    nav {
+      background-color: #f7dc6f;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      color: #e67e22;
+    }
+
+    .section {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    h2 {
+      color: lightcyan;
+      font-size: 32px;
+    }
+
+    button {
+      background-color: #e67e22;
+      color: lightcyan;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #d35400;
+    }
+
+    footer {
+      background-color: #f8c471;
+      color: lightcyan;
+      text-align: center;
+      padding: 20px;
+      margin-top: 695px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Welcome To My T-Shirts Shop
+  </header>
+
+  <section id="login" class="section">
+    <button onclick="login()">Login</button>
+  </section>
+
+  <footer>
+    &copy; Program and Develop by: Daniela Nicol P. Valencia
+  </footer>
+
+  <script>
+    let attempts = 0;
+    const correctUsername = 'admin123';
+    const correctPassword = 'admin123';
+
+    function login() {
+      const username = prompt('Enter Username:');
+      const password = prompt('Enter Password:');
+
+      if (username === correctUsername && password === correctPassword) {
+        alert('Login Successful! Redirecting...');
+        window.location.href = 'Homepage.html';
+      } else {
+        attempts++;
+        if (attempts >= 2) {
+          alert('Too many failed attempts. Please wait 10 seconds.');
+          let countdown = 10;
+          const interval = setInterval(() => {
+            if (countdown === 0) {
+              clearInterval(interval);
+              attempts = 0;
+              alert('You can try again now.');
+            } else {
+              console.log(`Retry in ${countdown} seconds`);
+              countdown--;
+            }
+          }, 1000);
+        } else {
+          alert('Incorrect username or password. Please try again.');
+        }
+      }
+    }
+  </script>
+</body>
+</html>
